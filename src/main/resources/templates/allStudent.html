@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List Student</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h2>List Student</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Telephone</th>
+            <th>Thumbnail</th>
+            <th>Birthday</th>
+            <th>Action</th> <!-- Add the Action column -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.tel}"></td>
+            <td>
+                <img th:src="@{${student.thumbnail}}" alt="thumbnail" style="width:100px;height:100px;" />
+            </td>
+            <td th:text="${student.birthday}"></td>
+            <td>
+                <!-- Form for Update -->
+                <form th:action="@{/student/studentupdate}" method="get">
+                    <input type="hidden" name="id" th:value="${student.id}" />
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+                <!-- Form for Delete -->
+                <form th:action="@{/student/studentdelete}" method="get" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                    <input type="hidden" name="id" th:value="${student.id}" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
