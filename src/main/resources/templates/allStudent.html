@@ -16,8 +16,8 @@
         <tr>
             <th>Name</th>
             <th>Telephone</th>
-            <th>Thumbnail</th>
-            <th>Birthday</th>
+<!--            <th>Thumbnail</th>-->
+<!--            <th>Birthday</th>-->
             <th>Action</th> <!-- Add the Action column -->
         </tr>
         </thead>
@@ -25,10 +25,10 @@
         <tr th:each="student : ${students}">
             <td th:text="${student.name}"></td>
             <td th:text="${student.tel}"></td>
-            <td>
-                <img th:src="@{${student.thumbnail}}" alt="thumbnail" style="width:100px;height:100px;" />
-            </td>
-            <td th:text="${student.birthday}"></td>
+<!--            <td>-->
+<!--                <img th:src="@{${student.thumbnail}}" alt="thumbnail" style="width:100px;height:100px;" />-->
+<!--            </td>-->
+<!--            <td th:text="${student.birthday}"></td>-->
             <td>
                 <!-- Form for Update -->
                 <form th:action="@{/student/studentupdate}" method="get">
