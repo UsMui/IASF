@@ -33,7 +33,10 @@ public class EmployeeController {
     public String saveOrUpdate(@ModelAttribute("employee") Employee employee, ModelMap modelMap){
         String view="allEmployee";
         try{
-            employeeService.saveEmployee(employee);
+            if(employee.getWage()>=0 && employee.getName()!=null){
+                employeeService.saveEmployee(employee);
+            }
+
             List<Employee> employees = employeeService.findAllEmployees();
             modelMap.addAttribute("employees",employees);
 
