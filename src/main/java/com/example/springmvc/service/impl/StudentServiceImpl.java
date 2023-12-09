@@ -19,7 +19,6 @@ public class StudentServiceImpl implements StudentService {
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
-
     }
 
     @Override
